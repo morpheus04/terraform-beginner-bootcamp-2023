@@ -87,3 +87,16 @@ https://en.wikipedia.org/wiki/Chmod
 Careful when using **init** as it will not run if restarting existing workspace
 
 https://www.gitpod.io/docs/configure/workspaces/tasks
+
+
+### Working with Env Vars
+
+List out all Environmment Variables (Env Vars) using `env` command
+
+Filter out specific env vars using the **grep** syntax e.g. `env | grep AWS`
+
+#### Setting and Unsetting Env Vars
+
+Set using `export HELLO='world`
+
+Unset using `unset HELLO`
