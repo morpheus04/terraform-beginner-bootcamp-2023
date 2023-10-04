@@ -71,7 +71,7 @@ class TerraTownsMockServer < Sinatra::Base
     end
   end
 
-  # return a harcoded access token
+  # return a hardcoded access token
   def x_access_code
     return '9b49b3fb-b8e9-483c-b703-97ba88eef8e0'
   end
@@ -85,7 +85,7 @@ class TerraTownsMockServer < Sinatra::Base
     auth_header = request.env["HTTP_AUTHORIZATION"]
     # Check if the Authorization header exists? 
     if auth_header.nil? || !auth_header.start_with?("Bearer ")
-      error 401, "a1000 Failed to authenicate, bearer token invalid and/or teacherseat_user_uuid invalid"
+      error 401, "a1000 Failed to authenticate, bearer token invalid and/or teacherseat_user_uuid invalid"
     end
 
     # Does the token match the one in our database?
@@ -93,17 +93,17 @@ class TerraTownsMockServer < Sinatra::Base
     # code = access_code = token
     code = auth_header.split("Bearer ")[1]
     if code != x_access_code
-      error 401, "a1001 Failed to authenicate, bearer token invalid and/or teacherseat_user_uuid invalid"
+      error 401, "a1001 Failed to authenticate, bearer token invalid and/or teacherseat_user_uuid invalid"
     end
 
     # was there a user_uuid in the body payload json?
     if params['user_uuid'].nil?
-      error 401, "a1002 Failed to authenicate, bearer token invalid and/or teacherseat_user_uuid invalid"
+      error 401, "a1002 Failed to authenticate, bearer token invalid and/or teacherseat_user_uuid invalid"
     end
 
     # the code and the user_uuid should be matching for user
     unless code == x_access_code && params['user_uuid'] == x_user_uuid
-      error 401, "a1003 Failed to authenicate, bearer token invalid and/or teacherseat_user_uuid invalid"
+      error 401, "a1003 Failed to authenticate, bearer token invalid and/or teacherseat_user_uuid invalid"
     end
   end
 
