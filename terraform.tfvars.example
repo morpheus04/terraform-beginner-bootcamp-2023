@@ -1,9 +1,11 @@
-terratowns_endpoint="https://terratowns.cloud/api"
+terratowns_endpoint = "https://terratowns.cloud/api"
 arcanum = {
-  public_path = "/workspace/terraform-beginner-bootcamp-2023/public/arcanum"
-  content_version = 2 
+  public_path     = "/workspace/terraform-beginner-bootcamp-2023/public/arcanum"
+  content_version = 1
+  town            = "video-valley"
 }
 payday = {
-  public_path = "/workspace/terraform-beginner-bootcamp-2023/public/payday"
-  content_version = 1 
+  public_path     = "/workspace/terraform-beginner-bootcamp-2023/public/payday"
+  content_version = 1
+  town            = "video-valley"
 }
