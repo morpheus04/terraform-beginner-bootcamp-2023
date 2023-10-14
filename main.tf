@@ -28,13 +28,30 @@ provider "terratowns" {
   token     = var.terratowns_access_token
 }
 
-module "home_arcanum_hosting" {
+module "home_playlist_hosting" {
+  source          = "./modules/terrahome_aws"
+  user_uuid       = var.teacherseat_user_uuid
+  public_path     = var.playlist.public_path
+  content_version = var.playlist.content_version
+}
+
+resource "terratowns_home" "home_playlist" {
+  name            = "Music is the divine way to tell beautiful, poetic things to the heart!"
+  description     = <<DESCRIPTION
+Music is a moral law. It gives soul to the universe, wings to the mind, flight to the imagination, and charm and gaiety to life and to everything.
+DESCRIPTION
+  domain_name     = module.home_playlist_hosting.domain_name
+  town            = var.playlist.town
+  content_version = var.playlist.content_version
+}
+
+
+/* module "home_arcanum_hosting" {
   source          = "./modules/terrahome_aws"
   user_uuid       = var.teacherseat_user_uuid
   public_path     = var.arcanum.public_path
   content_version = var.arcanum.content_version
 }
-
 resource "terratowns_home" "home" {
   name            = "How to play Arcanum in 2023!"
   description     = <<DESCRIPTION
@@ -46,7 +63,7 @@ DESCRIPTION
   domain_name     = module.home_arcanum_hosting.domain_name
   town            = var.arcanum.town
   content_version = var.arcanum.content_version
-}
+} */
 
 /* module "home_payday_hosting" {
   source          = "./modules/terrahome_aws"

@@ -36,8 +36,21 @@ resource "aws_s3_object" "index_html" {
   }
 }
 
+resource "aws_s3_object" "styles_css" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "styles.css"
+  source = "${var.public_path}/styles.css"
+  content_type = "text/css"
+
+  etag = filemd5("${var.public_path}/styles.css")
+  lifecycle {
+    replace_triggered_by = [terraform_data.content_version.output]
+    ignore_changes = [etag]
+  }
+}
+
 resource "aws_s3_object" "upload_assets" {
-  for_each = fileset("${var.public_path}/assets","*.{jpg,png,gif}")
+  for_each = fileset("${var.public_path}/assets","*.{jpg,png,gif,jpeg}")
   bucket = aws_s3_bucket.website_bucket.bucket
   key    = "assets/${each.key}"
   source = "${var.public_path}/assets/${each.key}"
