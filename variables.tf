@@ -25,3 +25,11 @@ variable "payday" {
     town            = string
   })
 }
+
+variable "playlist" {
+  type = object({
+    public_path     = string
+    content_version = number
+    town            = string
+  })
+}

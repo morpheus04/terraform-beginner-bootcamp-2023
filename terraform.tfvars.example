@@ -2,10 +2,15 @@ terratowns_endpoint = "https://terratowns.cloud/api"
 arcanum = {
   public_path     = "/workspace/terraform-beginner-bootcamp-2023/public/arcanum"
   content_version = 1
-  town            = "video-valley"
+  town            = "melomaniac-mansion"
 }
 payday = {
   public_path     = "/workspace/terraform-beginner-bootcamp-2023/public/payday"
   content_version = 1
-  town            = "video-valley"
+  town            = "melomaniac-mansion"
+}
+playlist = {
+  public_path     = "/workspace/terraform-beginner-bootcamp-2023/public/playlist"
+  content_version = 1
+  town            = "melomaniac-mansion"
 }
